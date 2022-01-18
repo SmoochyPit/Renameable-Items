@@ -1,9 +1,9 @@
 {
     "display": {
-        "title": "Pack Template",
-        "description": "This is a placeholder",
+        "title": "Nameable Items",
+        "description": "Shift to edit name tags, no anvil needed!",
         "icon": {
-            "item": "minecraft:barrier"
+            "item": "minecraft:name_tag"
         },
         "announce_to_chat": false,
         "show_toast": false

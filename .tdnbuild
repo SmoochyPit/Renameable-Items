@@ -18,7 +18,7 @@
 		
 		"directories": {
 			
-			"data-pack": "out/template.zip"
+			"data-pack": "out/itemname.zip"
 			
 		},
 		"export-comments": false

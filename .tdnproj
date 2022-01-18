@@ -1,7 +1,7 @@
 {
 	
 	"target-version": [1, 18, 1],
-	"default-namespace": "template",
+	"default-namespace": "itemname",
 	"language-level": 2
 		
 }
