@@ -6,18 +6,18 @@ The concept of Renameable Items is simple: enable the user to rename specific it
 
 While holding an applicable item, sneak to rename it. This will replace the item with a temporary book and quill. The player should open it and write the desired name within the book. Then, upon signing, the previous item is returned with the name.
 
-![Normal item](https://imgur.com/F0q6cEQ)
-![Rename book](https://imgur.com/pPWQPX8)
-![Book instruction message](https://imgur.com/B45cqHh)
-![Name written on second page](https://imgur.com/Q4gNW7F)
-![Titled whatever, then signed](https://imgur.com/nZ331jY)
-![Item successfully renamed](https://imgur.com/cwuwGpZ)
+![Normal item](https://i.imgur.com/F0q6cEQ.png)
+![Rename book](https://i.imgur.com/pPWQPX8.png)
+![Book instruction message](https://i.imgur.com/B45cqHh.png)
+![Name written on second page](https://i.imgur.com/Q4gNW7F.png)
+![Titled whatever, then signed](https://i.imgur.com/nZ331jY.png)
+![Item successfully renamed](https://i.imgur.com/cwuwGpZ.png)
 
 Returns item upon failure:
-![Item rename failed upon deselecting](https://imgur.com/6G1yZiz)
+![Item rename failed upon deselecting](https://i.imgur.com/6G1yZiz.png)
 
 Supports stacks:
-![Supports stack renaming](https://imgur.com/vH5yu3t)
+![Supports stack renaming](https://i.imgur.com/vH5yu3t.png)
 
 By default, Paper (used to label [Warp Pads](https://github.com/SmoochyPit/Warp-Pads-Rewrite)) and Name Tags have this functionality enabled.
 
