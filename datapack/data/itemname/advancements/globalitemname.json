@@ -1,7 +1,7 @@
 {
     "display": {
-        "title": "Nameable Items",
-        "description": "Shift to edit name tags, no anvil needed!",
+        "title": "Renameable Items",
+        "description": "Shift to edit name tags, no anvil needed! v1.0",
         "icon": {
             "item": "minecraft:name_tag"
         },

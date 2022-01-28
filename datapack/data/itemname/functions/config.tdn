@@ -3,6 +3,13 @@
 
 global final var config = {
 
-    
+    items: [
+        "minecraft:name_tag",
+        "minecraft:paper"
+    ],
+    book_name:'{"text":"Edit Label","italic":false}',
+    book_page:"Type the item name on the next page and sign to confirm",
+
+    requireXP:false
 
 }

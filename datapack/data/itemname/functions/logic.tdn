@@ -1,0 +1,138 @@
+@ tag load
+
+schedule function / 10t
+
+define objective in.success
+
+define function /tick_rename {
+
+    as @a[tag=in.renaming] at @s
+    function {
+
+        using tag in.localhold @e[tag=in.holder,limit=1,sort=nearest] {
+
+            tp @e[tag=in.localhold,limit=1] @s
+
+            if entity @s[nbt={SelectedItem:{id:"written_book",tag:{renameBook:true}}}]
+            function {
+
+                set itemname:rename~book = @s.SelectedItem.tag
+
+                item replace entity @s weapon.mainhand from entity @e[tag=in.localhold,limit=1] armor.feet
+
+                set @e[tag=in.localhold,limit=1].CustomName = itemname:rename~book.pages[1]
+
+                /execute store success score @s in.success if data storage itemname:rename book.pages[1]
+
+                if (config.requireXP) {
+
+                    item modify entity @s[level=1..] weapon.mainhand itemname:book_to_paper
+                    xp add @s[level=1..] -1 levels
+
+                    # Prevent the success or failure actionbars from running at all
+                    scoreboard players reset @s[level=0] in.success
+
+                } else {
+
+                    item modify entity @s weapon.mainhand itemname:book_to_paper
+
+                }
+
+
+                tag @s[tag=!global.ignore.gui] add in.displaying_gui
+                tag @s[tag=in.displaying_gui] add global.ignore.gui
+                title @s[tag=in.displaying_gui,scores={in.success=1}] actionbar {
+                    "text":"Item renamed to \"",
+                    "color":"green",
+                    "extra":[
+                        {
+                            "selector":"@e[tag=in.localhold,limit=1]"
+                        },
+                        {
+                            "text":"\""
+                        }
+                    ]
+                }
+                title @s[tag=in.displaying_gui,scores={in.success=0}] actionbar {
+                    "text":"Failed to rename item",
+                    "color":"red"
+                }
+                if (config.requireXP) {
+                    title @s[tag=in.displaying_gui,level=0] actionbar {
+                        "text":"Insufficient XP levels",
+                        "color":"red"
+                    }
+                }
+
+                kill @e[tag=in.localhold,limit=1]
+                tag @s remove in.renaming
+
+            }
+
+            if entity @s[tag=in.renaming]
+            unless entity @s[nbt={SelectedItem:{id:"writable_book",tag:{renameBook:true}}}]
+            function {
+
+                clear @s written_book{renameBook:true}
+                clear @s writable_book{renameBook:true}
+
+                tag @s[tag=!global.ignore.gui] add in.displaying_gui
+                tag @s[tag=in.displaying_gui] add global.ignore.gui
+                title @s[tag=in.displaying_gui] actionbar {
+                    "text":"Failed to rename item",
+                    "color":"red"
+                }
+
+                summon item ~ ~ ~ {Item:{id:"stone",Count:1b}}
+                set @e[type=item,limit=1,sort=nearest].Item = @e[tag=in.localhold,limit=1].ArmorItems[0]
+
+                kill @e[tag=in.localhold,limit=1]
+                tag @s remove in.renaming
+
+            }
+
+            if entity @s[tag=in.renaming]
+            schedule function /.. 5t
+
+        }
+
+    }
+
+    # Self plagiarism
+
+    define function remove_gui_display {
+    
+        tag @a[tag=in.displaying_gui] remove global.ignore.gui
+        tag @a remove in.displaying_gui
+        
+    }
+
+    if entity @a[tag=in.displaying_gui]
+        schedule function /remove_gui_display 20t
+
+}
+
+kill @e[type=item,nbt={Item:{tag:{renameBook:true}}}]
+
+as @a[predicate=itemname:hold_nameable,predicate=itemname:crouch]
+at @s
+function {
+
+    summon armor_stand ~ ~ ~ {
+        Tags:["in.holder"],
+        Invisible:true,
+        Small:true,
+        Marker:true
+        }
+
+    set @e[tag=in.holder,limit=1,sort=nearest].ArmorItems[0] = @s.SelectedItem
+
+    tag @s add in.renaming
+
+    set itemname:rename~paper = @s.SelectedItem.tag
+
+    item replace entity @s weapon.mainhand with writable_book{renameBook:true,CustomModelData:0290100,display:{Name:${config.book_name}},pages:[${config.book_page}]}
+
+    schedule function /../tick_rename 3t
+
+}

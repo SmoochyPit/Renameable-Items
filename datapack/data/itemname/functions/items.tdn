@@ -1,0 +1,17 @@
+@ on compile
+
+# Used to define item tags used in predicates
+
+var items = []
+
+for (item_string in config.items) {
+
+    eval items.add((resource) item_string)
+
+}
+
+eval Tags.createTag(
+    "item",
+    resource<#itemname:nameable>,
+    items
+)

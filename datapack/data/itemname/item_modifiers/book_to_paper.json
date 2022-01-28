@@ -1,0 +1,14 @@
+{
+    "function":"copy_nbt",
+    "source": {
+        "type":"storage",
+        "source":"itemname:rename"
+    },
+    "ops":[
+        {
+            "source":"book.pages[1]",
+            "target":"display.Name",
+            "op":"replace"
+        }
+    ]
+}
