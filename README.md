@@ -1,6 +1,6 @@
-# Renameable Items
+# On-The-Fly Renaming
 
-The concept of Renameable Items is simple: enable the user to rename specific items without the use of an anvil. 
+The concept of OTF Renaming is simple: enable the user to rename specific items without the use of an anvil. 
 
 ## Usage
 
@@ -21,6 +21,8 @@ Supports stacks:
 
 By default, Paper (used to label [Warp Pads](https://github.com/SmoochyPit/Warp-Pads-Rewrite)) and Name Tags have this functionality enabled.
 
+*Note: Unlike an anvil, this project does not limit the size or contents of user input. Keep this in mind when choosing to install.*
+
 ## Installation
 ### Step 1 - Download
 
@@ -28,7 +30,7 @@ By default, Paper (used to label [Warp Pads](https://github.com/SmoochyPit/Warp-
 
 1. Click [releases](https://github.com/SmoochyPit/Renameable-Items/releases)
 2. Find the latest release
-3. Under assets, click "renameable-items-1.X.X.zip" to download the archived data pack. *This file **should not** be unzipped before installation*
+3. Under assets, click "otf-renaming-1.X.X.zip" to download the archived data pack. *This file **should not** be unzipped before installation*
 4. Select one of the following methods for installing the data pack:
 
 ### Step 2 - Data pack menu (New singleplayer worlds) (Very Easy)
@@ -37,16 +39,16 @@ By default, Paper (used to label [Warp Pads](https://github.com/SmoochyPit/Warp-
 2. Click "Data Packs"
 3. Drag the downloaded file onto your Minecraft window (toggle fullscreen with F11)
 4. Click "Yes"
-5. Hover over Renameable Items in the menu and click the right arrow to add it to the list of selected data packs
+5. Hover over OTF Renaming in the menu and click the right arrow to add it to the list of selected data packs
 6. Click "Done" and change any other world options you want
 7. Click "Create New World"
 
 ### Step 2 - Manual installation (Existing singleplayer or multiplayer worlds) (Easy)
 
 1. Place the downloaded file into the `[worldname]\datapacks` folder on your server or singleplayer world (located at `C:\Users\[user]\AppData\Roaming\.minecraft\saves\[worldname]\datapacks` by default in Windows and `~/.minecraft/saves/[worldname]/datapacks` on Linux).
-2. Reload the world. If successful, Renameable Items will show under the Data Packs advancement tab.
+2. Reload the world.
 
-At this point, Renameable Items will now be installed in your Minecraft world.
+At this point, OTF Renaming will now be installed in your Minecraft world.
 
 ### Step 3 - Updating
 
