@@ -58,7 +58,7 @@ At this point, Renameable Items will now be installed in your Minecraft world.
 
 ### Support
 
-Tested to support Minecraft: Java Edition 1.18.1.
+Tested to support Minecraft: Java Edition 1.18.1-1.20.4.
 
 ### Uninstalling
 
