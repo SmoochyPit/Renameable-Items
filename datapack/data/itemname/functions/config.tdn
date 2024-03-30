@@ -7,6 +7,10 @@ global final var config = {
         "minecraft:name_tag",
         "minecraft:paper"
     ],
+    default_names: [
+        "Name Tag",
+        "Paper"
+    ],
     book_name:'{"text":"Edit Label","italic":false}',
     book_page:"Type the item name on the next page and sign to confirm",
 

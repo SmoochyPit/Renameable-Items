@@ -15,6 +15,20 @@ define function /tick_rename {
 
             if entity @s[nbt={SelectedItem:{id:"written_book",tag:{renameBook:true}}}]
             function {
+                data remove storage itemname:rename resetName
+
+                for (var i=0; i<config.items.length; i++) {
+                    if entity @e[tag=in.localhold,limit=1,nbt={
+                        ArmorItems: [{id:${config.items[i]}}, {}, {}, {}]
+                    }]
+                    if entity @s[nbt={SelectedItem:{tag:{pages:[${'\"' + config.default_names[i] + '\"'}]}}}]
+                        function {
+                            set itemname:rename~resetName = 1
+                            data remove entity @e[tag=in.localhold,limit=1] ArmorItems[0].tag
+                            set @s->in.success = 1
+                        }
+                }
+
 
                 set itemname:rename~book = @s.SelectedItem.tag
 
@@ -22,20 +36,23 @@ define function /tick_rename {
 
                 set @e[tag=in.localhold,limit=1].CustomName = itemname:rename~book.pages[1]
 
-                /execute store success score @s in.success if data storage itemname:rename book.pages[1]
+                unless data storage itemname:rename resetName
+                function {
+                    /execute store success score @s in.success if data storage itemname:rename book.pages[1]
 
-                if (config.requireXP) {
+                    if (config.requireXP) {
 
-                    item modify entity @s[level=1..] weapon.mainhand itemname:book_to_paper
-                    xp add @s[level=1..] -1 levels
+                        item modify entity @s[level=1..] weapon.mainhand itemname:book_to_paper
+                        xp add @s[level=1..] -1 levels
 
-                    # Prevent the success or failure actionbars from running at all
-                    scoreboard players reset @s[level=0] in.success
+                        # Prevent the success or failure actionbars from running at all
+                        scoreboard players reset @s[level=0] in.success
 
-                } else {
+                    } else {
 
-                    item modify entity @s weapon.mainhand itemname:book_to_paper
+                        item modify entity @s weapon.mainhand itemname:book_to_paper
 
+                    }
                 }
 
 
